@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Camp Requests{% endblock %}
+
+{% block content %}
+    {% if all_camp_reqs %}
+    <table class="table table-bordered">
+        {% for reqs in all_camp_reqs %}
+            <tr>
+                <td>{{ reqs.camp_id }}</td>
+                <td><center>{{ reqs.item_id }}</center></td>
+                <td><center>{{ reqs.item_amt }}</center></td>
+                <td><center>Fullfill</center></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+{% endblock %}

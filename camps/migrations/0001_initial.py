@@ -12,12 +12,20 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='SupplyReqs',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('camp_id', models.CharField(max_length=30)),
+                ('fullfilled', models.BooleanField(default=False)),
+            ]
+        ),
+        migrations.CreateModel(
             name='Inventory',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('camp_id', models.CharField(max_length=30)),
                 ('item_id', models.CharField(max_length=30)),
                 ('item_amt', models.PositiveIntegerField()),
-            ],
-        ),
+            ]
+        )
     ]

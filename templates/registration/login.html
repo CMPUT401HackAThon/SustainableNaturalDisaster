@@ -1,5 +1,7 @@
 <!-- templates/registration/login.html -->
 {% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
 
 <!doctype html>
 <html lang="en">
@@ -40,25 +42,25 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <form>
-    <!--
-    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">  
-    -->
+    <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">  --> 
+    
     
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-    {% block title %}Login{% endblock %}
 
-    {% block content %}
     <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
+      <div class="form-group">
+        <label for="inputUsername" class="visually-hidden">Username</label>
+        <input type="text" class="form-control" id="inputUsername" placeholder="Username" required autofocus>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="visually-hidden">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
       <a href="{% url 'signup' %}">Don't have an account</a>
     </form>
-    {% endblock %}
-    
-    
-  </form>
-</main>
+<!-- </main> -->
   </body>
 </html>
+{% endblock %}

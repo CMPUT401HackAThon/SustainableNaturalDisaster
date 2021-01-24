@@ -1,3 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}Camp Inventory{% endblock %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thread>
+        <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Amount</th>
+            <th scope="button">Button</th>
+        </tr>
+    </thread>
+    <tbody>
+        <td><center>Item1</center></td>
+        <td><center>Amount1</center></td>
+        <td><center><button type="button" class="btn btn-primary">button</button></center></td>
+    </tbody>
+</table>
+{% endblock %}

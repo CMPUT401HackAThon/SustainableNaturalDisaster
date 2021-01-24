@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return render(request, 'home.html', {})
+    sc = SupplyReqs.objects.filter(fullfilled = False)
+    total_reqs = sc.count()
+    return render(request, 'home.html', {"total_reqs":total_reqs})
 
 def camp_inv(request):
     return render(request, 'camp_inv.html', {})

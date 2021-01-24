@@ -1,15 +1,16 @@
-{% extends "__base.html" %}
+{% extends "base.html" %}
 {% load widget_tweaks %}
 
-{% block page_content %}
+{% block content %}
 <div class="card">
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-8">
-                <h3 class="mb-0">Create a New Book</h3>
+                <h3 class="mb-0">Update Inventory #{{Inventory.id}}</h3>
             </div>
             <div class="col-4 text-right">
-                <a href="{% url 'book-list' %}" class="btn btn-sm btn-primary">View All</a>
+                <a href="{% url 'Inventory-detail' Inventory.id %}" class="btn btn-sm btn-info">View</a>
+                <a href="{% url 'Inventory-list' %}" class="btn btn-sm btn-primary">View All</a>
             </div>
         </div>
     </div>
@@ -21,8 +22,8 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label"
-                                for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-                                {% render_field form.name|add_class:"form-control form-control-alternative" placeholder="Enter book name here"%}
+                                for="{{ form.item_id.id_for_label }}">{{ form.item_id.label }}</label>
+                                {% render_field form.item_id|add_class:"form-control form-control-alternative" placeholder="Enter item here"%}
                         </div>
                     </div>
                 </div>
@@ -30,14 +31,14 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label"
-                                for="{{ form.isbn_number.id_for_label }}">{{ form.isbn_number.label }}</label>
-                                {% render_field form.isbn_number|add_class:"form-control form-control-alternative" placeholder="Enter book isbn here"%}
+                                for="{{ form.item_amt.id_for_label }}">{{ form.item_amt.label }}</label>
+                                {% render_field form.item_amt|add_class:"form-control form-control-alternative" placeholder="Enter amount of item here"%}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4 offset-4">
-                        <button type="submit" class="btn btn-success btn-block">Create</button>
+                        <button type="submit" class="btn btn-success btn-block">Update</button>
                     </div>
                 </div>
             </div>

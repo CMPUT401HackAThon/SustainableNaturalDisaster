@@ -1,15 +1,15 @@
-{% extends "__base.html" %}
+{% extends "base.html" %}
 
-{% block page_content %}
+{% block content %}
 <div class="card">
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-8">
-                <h3 class="mb-0">Delete Book #{{object.id}}</h3>
+                <h3 class="mb-0">Delete Supply #{{Inventory.id}}</h3>
             </div>
             <div class="col-4 text-right">
-                <a href="{% url 'book-detail' book.id %}" class="btn btn-sm btn-info">View</a>
-                <a href="{% url 'book-list' %}" class="btn btn-sm btn-primary">View All</a>
+                <a href="{% url 'Inventory-detail' Inventory.id %}" class="btn btn-sm btn-info">View</a>
+                <a href="{% url 'Inventory-list' %}" class="btn btn-sm btn-primary">View All</a>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <form method="post">
             {% csrf_token %}
             <div class="alert alert-warning" role="alert">
-                Are you sure you want to delete <strong>{{ object }}</strong> ?
+                Are you sure you want to delete <strong>{{ Inventory }}</strong> ?
             </div>
             <div class="row">
                 <div class="col-4 offset-4">

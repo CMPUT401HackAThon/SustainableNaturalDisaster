@@ -16,15 +16,15 @@ from django.urls import reverse_lazy
 def home(request):
     return render(request, 'home.html', {})
 
-def camp_inv(request):
-    return render(request, 'camp_inv.html', {})
+# def camp_inv(request):
+#     return render(request, 'camp_inv.html', {})
 
 def supplyRequests(request):
     current_user = request.user
     all_camp_reqs = SupplyReqs.objects.all
     return render(request, 'supplyRequests.html', {'all_camp_reqs': all_camp_reqs, 'all_inventories': Inventory, 'current_user': current_user})
 
-@method_decorator(login_required, name='dispatch')
+
 class InventoryListView(ListView):
 
     model = Inventory
@@ -47,7 +47,6 @@ class InventoryListView(ListView):
         return context
 
 
-@method_decorator(login_required, name='dispatch')
 class InventoryCreateView(CreateView):
     model = Inventory
     template_name = 'Inventory/create.html'
@@ -55,31 +54,30 @@ class InventoryCreateView(CreateView):
     success_url = reverse_lazy('Inventory-list')
 
 
-@method_decorator(login_required, name='dispatch')
 class InventoryDetailView(DetailView):
 
     model = Inventory
     template_name = 'Inventory/detail.html'
-    context_object_name = 'Inventorys'
+    context_object_name = 'Inventory'
 
 
-@method_decorator(login_required, name='dispatch')
 class InventoryUpdateView(UpdateView):
 
     model = Inventory
     template_name = 'Inventory/update.html'
-    context_object_name = 'Inventorys'
+    context_object_name = 'Inventory'
     fields = ('item_id', 'item_amt',)
 
     def get_success_url(self):
         return reverse_lazy('Inventory-detail', kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
 class InventoryDeleteView(DeleteView):
     model = Inventory
     template_name = 'Inventory/delete.html'
     success_url = reverse_lazy('Inventory-list')
+
+    
 def fullfill_request(request, request_id):
     supply_req = SupplyReqs.objects.get(pk=request_id)
     req_amt = supply_req.item_amt

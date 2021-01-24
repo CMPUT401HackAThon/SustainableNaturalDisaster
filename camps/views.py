@@ -98,7 +98,7 @@ def fullfill_request(request, request_id):
 
         # Check if user if fullfilling own request
         if supply_req.camp_id == request.user.username:
-            messages.success(request, ("You can't fullfill your own request"))
+            messages.error(request, ("You can't fullfill your own request"))
         elif camp_inventory.item_amt > req_amt:
             
             # Check if requester has item in their database

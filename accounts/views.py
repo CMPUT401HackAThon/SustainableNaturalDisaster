@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 
 def signup_view(request):
+    status = 200
     form = UserCreationForm
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -16,13 +17,15 @@ def signup_view(request):
             return redirect('login')
         else:
             messages.info(request,"Please try again")
+            status = 409
     else:
         form = UserCreationForm()
     context = {}
-    return render(request,'../templates/registration/signup.html')
+    return render(request,'../templates/registration/signup.html', status = status)
 
 
 def login_view(request):
+    status = 200
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -32,7 +35,8 @@ def login_view(request):
             return redirect('home')
         else:
             messages.info(request, "Username or password is incorrect!  Please try again!")
-    return render(request, '../templates/registration/login.html')
+            status = 401
+    return render(request, '../templates/registration/login.html', status = status)
 
 def logout_view(request):
     logout(request)

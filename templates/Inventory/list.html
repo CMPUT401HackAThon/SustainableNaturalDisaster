@@ -29,7 +29,7 @@
                     {% for Inventory in Inventorys %}
                     <tr>
                         <td>
-                            <a href="{% url 'Inventory-detail' Inventory.id %}">{{Inventory.camp_id}}</a>
+                            <a href="{% url 'Inventory-detail' Inventory.id %}">{{Inventory.id}}</a>
                         </td>
                         <td>{{Inventory.item_id}}</td>
                         <td>{{Inventory.item_amt}}</td>

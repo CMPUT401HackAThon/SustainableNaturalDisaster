@@ -28,7 +28,7 @@
                 <tbody>
                     {% for Inventory in Inventorys %}
                         {% if Inventory.camp_id == user.username%}
-                            <tr>
+                            <tr class="table-light">
                                 <td>
                                     <a href="{% url 'Inventory-detail' Inventory.id %}">{{Inventory.id}}</a>
                                 </td>

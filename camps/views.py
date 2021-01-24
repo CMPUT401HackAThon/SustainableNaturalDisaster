@@ -3,7 +3,6 @@ from .models import SupplyReqs, Inventory
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -52,7 +51,7 @@ class InventoryListView(ListView):
 class InventoryCreateView(CreateView):
     model = Inventory
     template_name = 'Inventory/create.html'
-    fields = ('item_id', 'item_amt', )
+    fields = ('camp_id','item_id', 'item_amt', )
     success_url = reverse_lazy('Inventory-list')
 
 
@@ -77,7 +76,9 @@ class InventoryUpdateView(UpdateView):
 class InventoryDeleteView(DeleteView):
     model = Inventory
     template_name = 'Inventory/delete.html'
+    context_object_name = 'Inventory'
     success_url = reverse_lazy('Inventory-list')
+
 
     
 def fullfill_request(request, request_id):

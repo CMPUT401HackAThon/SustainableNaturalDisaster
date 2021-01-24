@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col-8">
+                <h3 class="mb-0">Create a New Supply</h3>
+            </div>
+            <div class="col-4 text-right">
+                <a href="{% url 'Inventory-list' %}" class="btn btn-sm btn-primary">View All</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="pl-lg-4">
+                <!-- <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="{{ form.camp_id.id_for_label }}">{{ form.camp_id.label }}</label>
+                                {% render_field form.camp_id|add_class:"form-control form-control-alternative" placeholder="Enter camp name here"%}
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="{{ form.item_id.id_for_label }}">{{ form.item_id.label }}</label>
+                                {% render_field form.item_id|add_class:"form-control form-control-alternative" placeholder="Enter item name here"%}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="{{ form.item_amt.id_for_label }}">{{ form.item_amt.label }}</label>
+                                {% render_field form.item_amt|add_class:"form-control form-control-alternative" placeholder="Enter the amount of item here"%}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 offset-4">
+                        <button type="submit" class="btn btn-success btn-block">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

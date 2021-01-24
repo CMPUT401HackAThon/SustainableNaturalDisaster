@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col-8">
+          <h3 class="mb-0">Inventory Details #{{Inventory.id}}</h3>
+        </div>
+        <div class="col-1 text-right">
+          <a href="{% url 'Inventory-update' Inventory.id %}" class="btn btn-sm btn-info">Update</a>
+          <a href="{% url 'Inventory-delete' Inventory.id %}" class="btn btn-sm btn-warning">Delete</a>
+          <a href="{% url 'Inventory-list' %}" class="btn btn-sm btn-primary">View All</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Item</dt>
+      <dd class="col-sm-9">{{ Inventory.item_id }}</dd>
+      <dt class="col-sm-3">AMOUNT</dt>
+      <dd class="col-sm-9">{{ Inventory.item_amt }}</dd>
+    </dl>
+
+    </div>
+</div>
+{% endblock %}

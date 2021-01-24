@@ -3,17 +3,49 @@
 {% block title %}Camp Requests{% endblock %}
 
 {% block content %}
+
+{% if messages %}
+    {% for message in messages%}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<br/>
     {% if all_camp_reqs %}
-    <table class="table table-bordered">
-        {% for reqs in all_camp_reqs %}
-            <tr>
-                <td>{{ reqs.camp_id }}</td>
-                <td><center>{{ reqs.item_id }}</center></td>
-                <td><center>{{ reqs.item_amt }}</center></td>
-                <td><center>Fullfill</center></td>
-            </tr>
-        {% endfor %}
-    </table>
+        <table class="table table-bordered">
+            <thread>
+                <tr>
+                    <th scope="col">Camp</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Fullfillment</th>
+                </tr>
+            </thread>
+            <tbody>
+                {% for reqs in all_camp_reqs %}
+                    {% if not reqs.fullfilled %}
+                        <tr>
+                            <td>{{ reqs.camp_id }}</td>
+                            <td><center>{{ reqs.item_id }}</center></td>
+                            <td><center>{{ reqs.item_amt }}</center></td>
+                            <td><center><a href="{% url 'fullfill_req' reqs.id %}">Fullfill</a></center></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                {% for reqs in all_camp_reqs %}
+                    {% if reqs.fullfilled %}
+                        <tr>
+                            <td>{{ reqs.camp_id }}</td>
+                            <td><center>{{ reqs.item_id }}</center></td>
+                            <td><center>{{ reqs.item_amt }}</center></td>
+                            <td><center>Fullfilled</center></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
 
 {% endblock %}

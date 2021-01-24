@@ -32,13 +32,16 @@
                             <td><center>{{ reqs.item_amt }}</center></td>
                             <td><center><a href="{% url 'fullfill_req' reqs.id %}">Fullfill</a></center></td>
                         </tr>
-                    {% else %}
-                    <tr>
-                        <td>{{ reqs.camp_id }}</td>
-                        <td><center>{{ reqs.item_id }}</center></td>
-                        <td><center>{{ reqs.item_amt }}</center></td>
-                        <td><center>Fullfilled</center></td>
-                    </tr>
+                    {% endif %}
+                {% endfor %}
+                {% for reqs in all_camp_reqs %}
+                    {% if reqs.fullfilled %}
+                        <tr>
+                            <td>{{ reqs.camp_id }}</td>
+                            <td><center>{{ reqs.item_id }}</center></td>
+                            <td><center>{{ reqs.item_amt }}</center></td>
+                            <td><center>Fullfilled</center></td>
+                        </tr>
                     {% endif %}
                 {% endfor %}
             </tbody>

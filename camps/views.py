@@ -54,6 +54,12 @@ class InventoryCreateView(CreateView):
     fields = ('camp_id','item_id', 'item_amt', )
     success_url = reverse_lazy('Inventory-list')
 
+class InventoryCreateRequestView(CreateView):
+    model = SupplyReqs
+    template_name = 'Inventory/create_request.html'
+    fields = ('camp_id','item_id', 'item_amt', )
+    success_url = reverse_lazy('Inventory-list')
+
 
 class InventoryDetailView(DetailView):
 
